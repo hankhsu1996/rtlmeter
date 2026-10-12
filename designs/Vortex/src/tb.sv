@@ -168,7 +168,7 @@ module tb;
     input  longint unsigned               req_byteen,
     input  longint unsigned               req_addr,
     input  bit [`VX_MEM_DATA_WIDTH-1:0]   req_data,
-    output bit [`VX_MEM_DATA_WIDTH-1:0]   rsp_data,
+    output bit [`VX_MEM_DATA_WIDTH-1:0]   rsp_data
   );
 
   assign mem_rsp[0].tag_d = mem_req_tag;
