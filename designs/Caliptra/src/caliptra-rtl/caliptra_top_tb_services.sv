@@ -576,12 +576,12 @@ module caliptra_top_tb_services
 
     //keyvault injection hooks
     //Inject data to KV key reg
-    logic [0:15][31:0]   ecc_seed_tb      = 512'h_8FA8541C82A392CA74F23ED1DBFD73541C5966391B97EA73D744B0E34B9DF59ED0158063E39C09A5A055371EDF7A5441_00000000000000000000000000000000;
-    logic [0:15][31:0]   ecc_privkey_tb   = 512'h_F274F69D163B0C9F1FC3EBF4292AD1C4EB3CEC1C5A7DDE6F80C14292934C2055E087748D0A169C772483ADEE5EE70E17_00000000000000000000000000000000;
-    logic [0:15][31:0]   hmac384_key_tb   = 512'h_0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b_00000000000000000000000000000000;
+    logic [0:15][31:0]   ecc_seed_tb      = 512'h8FA8541C82A392CA74F23ED1DBFD73541C5966391B97EA73D744B0E34B9DF59ED0158063E39C09A5A055371EDF7A5441_00000000000000000000000000000000;
+    logic [0:15][31:0]   ecc_privkey_tb   = 512'hF274F69D163B0C9F1FC3EBF4292AD1C4EB3CEC1C5A7DDE6F80C14292934C2055E087748D0A169C772483ADEE5EE70E17_00000000000000000000000000000000;
+    logic [0:15][31:0]   hmac384_key_tb   = 512'h0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b_00000000000000000000000000000000;
     logic [0:15][31:0]   hmac512_key_tb   = 512'h0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b;
-    logic [0:15][31:0]   hmac512_block_tb = 512'h_e7f1293c6f23a53289143df1399e784cb71180e3830c3869fd725fe78f0b6480559d6344edc1aaf64b7d0701e78672d2_55555555555555555555555555555555;
-    logic [0:15][31:0]   mldsa_seed_tb    = 512'h_2d5cf89c46768a850768f0d4a243fe283fcee4d537071d12675fd1279340000a_55555555555555555555555555555555_00000000000000000000000000000000; //fixme padded with junk
+    logic [0:15][31:0]   hmac512_block_tb = 512'he7f1293c6f23a53289143df1399e784cb71180e3830c3869fd725fe78f0b6480559d6344edc1aaf64b7d0701e78672d2_55555555555555555555555555555555;
+    logic [0:15][31:0]   mldsa_seed_tb    = 512'h2d5cf89c46768a850768f0d4a243fe283fcee4d537071d12675fd1279340000a_55555555555555555555555555555555_00000000000000000000000000000000; //fixme padded with junk
     logic [0:15][31:0]   aes256_key_tb    = 512'hbc623095823dafe190998314fedbac4258395063234564532123adfcefda2344_0000000000000000000000000000000000000000000000000000000000000000;
     logic [0:15][31:0]   ecc_privkey_random;
     logic [0:15][31:0]   mldsa_seed_random;
@@ -592,7 +592,7 @@ module caliptra_top_tb_services
     logic [7:0] max_dwords ;
     logic [3:0] random_key_size ;
 
-    always_comb ecc_privkey_random = {ecc_test_vector.privkey, 128'h_00000000000000000000000000000000};
+    always_comb ecc_privkey_random = {ecc_test_vector.privkey, 128'h00000000000000000000000000000000};
     always_comb mldsa_seed_random = change_endian({256'h0, mldsa_test_vector.seed});
     always_comb mlkem_seed_random = {mlkem_test_vector.seed_z,mlkem_test_vector.seed_d};
     always_comb mlkem_msg_random = {256'h0,mlkem_test_vector.msg};
@@ -2152,7 +2152,7 @@ endgenerate //IV_NO
         end
     endtask
 
-    logic [0:15][31:0]   pcr_to_be_signed = 512'h_C8F518D4F3AA1BD46ED56C1C3C9E16FB800AF504DB98843548C5F623EE115F73D4C62ABC06D303B5D90D9A175087290D_16e6009644e2a5f2c41fed22e703fb78;
+    logic [0:15][31:0]   pcr_to_be_signed = 512'hC8F518D4F3AA1BD46ED56C1C3C9E16FB800AF504DB98843548C5F623EE115F73D4C62ABC06D303B5D90D9A175087290D_16e6009644e2a5f2c41fed22e703fb78;
     logic [0:15][31:0]   ecc_random_msg;
     logic [0:15][31:0]   mldsa_random_msg;
     always_comb ecc_random_msg = {ecc_test_vector.hashed_msg, 128'h00000000000000000000000000000000};
